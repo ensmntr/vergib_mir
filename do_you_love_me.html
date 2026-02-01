@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      width: 100%;
+      padding: 20px;
+    }
+
+    h1 {
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      text-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+
+    button {
+      font-size: 1.3rem;
+      padding: 14px 30px;
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background: #ff4d6d;
+      color: white;
+      box-shadow: 0 10px 25px rgba(255,77,109,0.45);
+    }
+
+    #no {
+      position: absolute;
+      background: white;
+      color: #ff4d6d;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Beni seviyor musun? ❤️</h1>
+  <button id="yes">Evet💕</button>
+</div>
+
+<button id="no">Hayır😏</button>
+
+<script>
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+
+// Hayır butonunu ekranda rastgele konumlandır
+function moveNoButton() {
+  const padding = 20;
+  const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+  const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+
+  const x = Math.random() * maxX;
+  const y = Math.random() * maxY;
+
+  noBtn.style.left = x + "px";
+  noBtn.style.top = y + "px";
+}
+
+// İlk konum
+moveNoButton();
+
+// Bilgisayar: üstüne gelince kaçar
+noBtn.addEventListener("mouseover", moveNoButton);
+
+// Mobil: dokunmaya çalışınca kaçar
+noBtn.addEventListener("touchstart", function (e) {
+  e.preventDefault();
+  moveNoButton();
+});
+
+// Evet basılınca final
+yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+    <div style="
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      color:white;
+      text-align:center;
+      padding:20px;
+    ">
+      <h1>Biliyordum aşkımmm 💕</h1>
+      <h2>Ben de seni çok seviyorum 🫶</h2>
+    </div>
+  `;
+});
+</script>
+
+</body>
+</html>
+
